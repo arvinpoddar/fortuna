@@ -14,11 +14,9 @@
 <body>
 	<h1 style="font-size: 60px; line-height: 60px;">Fortuna</h1>
 	<h3 style="margin-bottom: 10px;">Digital Fortune Cookie by Arvin Poddar</h3>
-	<video id="video" width="320" height="176">
-		<source src="assets/fortune.mp4" type="video/mp4">
-		<source src="assets/fortune.ogv" type="video/ogv">
-		Your browser does not support HTML5 video :(
-	</video><br />
+	<div id="cookie">
+		<img src="assets/close.png" style="height: 140px;" alt="Open the Cookie" />
+	</div><br />
 	<div id="paper" style="display: none;">
 		<p id="text"></p>
 		<h6 id="lucky"></h6>
@@ -76,7 +74,7 @@
 		var sound = document.getElementById("sound");
 
 		function openCookie() {
-			playVid();
+			revert();
 			document.getElementById('text').innerHTML = "Opening...";
 			document.getElementById('lucky').innerHTML = "";
 			var audio = new Audio('assets/crack.mp3');
@@ -84,13 +82,14 @@
 				if (document.getElementById("mute").checked != true) {
 					audio.play();
 				}
-			}, 550);
+			}, 500);
 			document.getElementById("button").disabled = true;
 			setTimeout(function() {
 				var index = Math.floor(Math.random() * (fortunes - 1));
 				var fortune = fortuneList[index];
 				document.getElementById('paper').style.display = "block";
 				document.getElementById('text').innerHTML = fortune;
+				document.getElementById('cookie').innerHTML = '<img src="assets/open.png" style="height: 120px;" alt="Open Cookie" />'
 
 				var lucky = "";
 				for (var i = 0; i < 6; i++) {
@@ -102,11 +101,11 @@
 				document.getElementById('lucky').innerHTML = lucky;
 				document.getElementById("button").disabled = false;
 				audio.pause();
-			}, 1200);
+			}, 1000);
 		}
 
-		function playVid() {
-			vid.play();
+		function revert() {
+				document.getElementById('cookie').innerHTML = '<img src="assets/close.png" style="height: 140px;" alt="Open the Cookie" />'
 		}
 	</script>
 </body>

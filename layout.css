@@ -105,6 +105,11 @@ video {
   text-align: center;
 }
 
+img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 500px) {
   #paper {
     font-size: 18px;
