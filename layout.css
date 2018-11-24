@@ -119,3 +119,13 @@ img {
     padding-top: 50px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  #button:hover {
+    background-color: #cb2d3e;
+  }
+
+  #button:active {
+    background-color: #800000;
+  }
+}
