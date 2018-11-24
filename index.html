@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- Developed by Arvin Poddar -->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Fortuna</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<link rel="icon" type="favicon" href="assets/favicon.png" />
+</head>
+
+<body>
+	<h1 style="font-size: 60px; line-height: 60px;">Fortuna</h1>
+	<h3 style="margin-bottom: 10px;">Digital Fortune Cookie by Arvin Poddar</h3>
+	<video id="video" width="320" height="176">
+		<source src="assets/fortune.mp4" type="video/mp4">
+		<source src="assets/fortune.ogv" type="video/ogv">
+		Your browser does not support HTML5 video :(
+	</video><br />
+	<div id="paper" style="display: none;">
+		<p id="text"></p>
+		<h6 id="lucky"></h6>
+	</div>
+	<button id="button" onclick="openCookie()">
+		Open Cookie
+	</button>
+	<br />
+	<input id="mute" style="margin-top: 10px;" type="checkbox" /> Mute
+
+	<script type="text/javascript">
+		var fortuneList = [
+			'The early bird gets the worm, but the second mouse gets the cheese.',
+			'Be on the alert to recognize your prime at whatever time of your life it may occur.',
+			'Your road to glory will be rocky, but fulfilling.',
+			'Courage is not simply one of the virtues, but the form of every virtue at the testing point.',
+			'Patience is your alley at the moment. Don’t worry!',
+			'Nothing is impossible to a willing heart.',
+			'Don\'t worry about money. The best things in life are free.',
+			'Don\'t pursue happiness – create it.',
+			'Courage is not the absence of fear; it is the conquest of it.',
+			'Nothing is so much to be feared as fear.',
+			'All things are difficult before they are easy.',
+			'The real kindness comes from within you.',
+			'A ship in the harbor is safe, but that’s not why ships are built.',
+			'You don\'t need strength to let go of something. What you really need is understanding.',
+			'If you want the rainbow, you have to tolerate the rain.',
+			'Fear is interest paid on a debt you may not owe.',
+			'Hardly anyone knows how much is gained by ignoring the future.',
+			'The wise man is the one that makes you think that he is dumb.',
+			'The usefulness of a cup is in its emptiness.',
+			'He who throws mud loses ground.',
+			'Success lies in the hands of those who want it.',
+			'To avoid criticism, do nothing, say nothing, be nothing.',
+			'One that would have the fruit must climb the tree.',
+			'It takes less time to do a thing right than it does to explain why you did it wrong.',
+			'Big journeys begin with a single step.',
+			'Of all our human resources, the most precious is the desire to improve.',
+			'Do the thing you fear and the death of fear is certain.',
+			'You never show your vulnerability, you are always self assured and confident.',
+			'People learn little from success, but much from failure.',
+			'Be not afraid of growing slowly, be afraid only of standing still.',
+			'We must always have old memories and young hopes.',
+			'A person who won’t read has no advantage over a person who can’t read.',
+			'He who expects no gratitude shall never be disappointed.',
+			'I hear and I forget. I see and I remember. I do and I understand.',
+			'The best way to get rid of an enemy is to make a friend.',
+			'It’s amazing how much good you can do if you don’t care who gets the credit.',
+			'Never forget that a half truth is a whole lie.',
+			'Happiness isn’t an outside job, it’s an inside job.',
+			'If you do not run your subconscious mind yourself, someone else will.',
+		];
+		var fortunes = fortuneList.length;
+		var vid = document.getElementById("video");
+		var sound = document.getElementById("sound");
+
+		function openCookie() {
+			playVid();
+			document.getElementById('text').innerHTML = "Opening...";
+			document.getElementById('lucky').innerHTML = "";
+			var audio = new Audio('assets/crack.mp3');
+			setTimeout(function() {
+				if (document.getElementById("mute").checked != true) {
+					audio.play();
+				}
+			}, 550);
+			document.getElementById("button").disabled = true;
+			setTimeout(function() {
+				var index = Math.floor(Math.random() * (fortunes - 1));
+				var fortune = fortuneList[index];
+				document.getElementById('paper').style.display = "block";
+				document.getElementById('text').innerHTML = fortune;
+
+				var lucky = "";
+				for (var i = 0; i < 6; i++) {
+					var luckyNum = Math.floor(Math.random() * 60);
+					lucky += luckyNum + ", ";
+				}
+
+				lucky = lucky.substring(0, lucky.length - 2);
+				document.getElementById('lucky').innerHTML = lucky;
+				document.getElementById("button").disabled = false;
+				audio.pause();
+			}, 1200);
+		}
+
+		function playVid() {
+			vid.play();
+		}
+	</script>
+</body>
+</html>
