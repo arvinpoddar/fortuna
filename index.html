@@ -15,7 +15,7 @@
 	<h1 style="font-size: 60px; line-height: 60px;">Fortuna</h1>
 	<h3 style="margin-bottom: 10px;">Digital Fortune Cookie by Arvin Poddar</h3>
 	<div id="cookie">
-		<img src="assets/close.png" style="height: 140px;" alt="Open the Cookie" />
+		<img src="assets/close.png" style="height: 160px;" alt="Open the Cookie" />
 	</div><br />
 	<div id="paper" style="display: none;">
 		<p id="text"></p>
@@ -90,7 +90,7 @@
 				var fortune = fortuneList[index];
 				document.getElementById('paper').style.display = "block";
 				document.getElementById('text').innerHTML = fortune;
-				document.getElementById('cookie').innerHTML = '<img src="assets/open.png" style="height: 120px;" alt="Open Cookie" />'
+				document.getElementById('cookie').innerHTML = '<img src="assets/open.png" style="height: 130px;" alt="Open Cookie" />'
 
 				var lucky = "";
 				for (var i = 0; i < 6; i++) {
@@ -105,7 +105,7 @@
 		}
 
 		function revert() {
-				document.getElementById('cookie').innerHTML = '<img src="assets/close.png" class="shaking" style="height: 140px;" alt="Open the Cookie" />'
+				document.getElementById('cookie').innerHTML = '<img src="assets/close.png" class="shaking" style="height: 160px;" alt="Open the Cookie" />'
 		}
 	</script>
 </body>
